@@ -60,39 +60,39 @@ object nivel1 {
 		const celdaDeAparicion = new CeldaDeAparicion()
 		const celdaDeTeletransportacion = new CeldaDeTeletransportacion()
 		
-		var celdasEspeciales = #{celdaBuena, celdaMala, celdaDeAparicion, celdaDeTeletransportacion}
+		const celdasEspeciales = #{celdaBuena, celdaMala, celdaDeAparicion, celdaDeTeletransportacion}
 		
 		const depo1 = new Deposito(llavesRecuperadas = 0, cajasRecuperadas = 0)
 		const depo2 = new Deposito(llavesRecuperadas = 0, cajasRecuperadas = 0)
 		const depo3 = new Deposito(llavesRecuperadas = 0, cajasRecuperadas = 0)
 		
-		var depositos = #{depo1, depo2, depo3}
+		const depositos = #{depo1, depo2, depo3}
 		
 		const caja1 = new Caja() 
 		const caja2 = new Caja()
 		const caja3 = new Caja()
 		
-		var cajas = #{caja1, caja2, caja3}
+		const cajas = #{caja1, caja2, caja3}
 		
 		const llave1 = new Llave()
 		const llave2 = new Llave()
 		const llave3 = new Llave()
 		
-		var llaves = #{llave1, llave2, llave3}
+		const llaves = #{llave1, llave2, llave3}
 		
 		const pulga = new Pulga()
 		const garrapata = new Garrapata()
 		const cucaracha = new Cucaracha()
 		const mosquito = new Mosquito() 
 		
-		var bichosMalos = #{pulga, garrapata, cucaracha, mosquito}
+		const bichosMalos = #{pulga, garrapata, cucaracha, mosquito}
 		
 		const garbanzo = new Garbanzo()	
 		const empanada = new Empanada()
 		const birra = new Birra()
 		const cocacola = new Cocacola()
 		
-		var comidas = #{garbanzo, empanada, birra, cocacola}
+		const comidas = #{garbanzo, empanada, birra, cocacola}
 		
 		const pepucha = new Pepucha()
 	
@@ -156,6 +156,10 @@ object nivel1 {
 		
 		game.onTick(1, "Mostrar cajas", { self.mostrarCajas() })
 		
+		// Para probar ganar
+		keyboard.t().onPressDo({self.ganarALaFuerza()})
+		// Para probar perder
+		keyboard.y().onPressDo({self.perderALaFuerza()})
 		
 	}
 	
@@ -230,6 +234,24 @@ object nivel1 {
 		if (game.hasVisual(objeto)) {
 			game.onTick(milisegundos, "Movimiento aleatorio", { objeto.moverAleatorio() })
 		}
+	}
+	
+	method ganarALaFuerza() {
+		game.schedule(2000, {
+				game.say(gerardo, "Listo el pollo!")
+			})
+			game.schedule(5000, {
+				game.clear()
+				finNivel1.configurate()
+			})
+	}
+	
+	method perderALaFuerza() {
+		game.say(gerardo, "Ay la Pepucha!")
+			game.schedule(1000, {
+				game.clear()
+				nivelPerder.configurate()
+			})
 	}
 }
 

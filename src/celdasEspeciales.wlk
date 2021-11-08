@@ -25,14 +25,21 @@ class CeldaEspecial inherits Elemento  {
 
 class CeldaBuena inherits CeldaEspecial {
 	
-	override method interactuar() { gerardo.sumarEnergia(30) }
+	override method interactuar() { 
+		gerardo.sumarEnergia(30)
+		game.say(gerardo, "Que bueno, un respirito!")
+	}
+		
 }
 
 /** *********************************************************************** **/
 
 class CeldaMala inherits CeldaEspecial {
 	
-	override method interactuar() { gerardo.restarEnergia(15) }
+	override method interactuar() { 
+		gerardo.restarEnergia(15)
+		game.say(gerardo, "Me siento mas cansado...")
+	}
 }
 
 /** *********************************************************************** **/
@@ -62,7 +69,7 @@ class CeldaDeAparicion inherits CeldaEspecial {
 		}
 		game.addVisual(aparicion)
 		game.onTick(2000, "Movimiento aparicion", { aparicion.moverAleatorio() })
-
+		game.say(gerardo, "Uy, que apareció por allá?")
 	}
 }
 
