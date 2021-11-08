@@ -18,6 +18,7 @@ class Comida inherits Elemento {
 	override method serAgarrado() {
 		gerardo.sumarEnergia(self.energiaPorUnidad())
 		gerardo.sumarSalud(self.saludPorUnidad())
+		game.say(gerardo, "Que rico!")
 		game.removeVisual(self)
 	}
 	
@@ -33,8 +34,6 @@ class Garbanzo inherits Comida {
 	override method energiaPorUnidad() = 0
 	
 	override method saludPorUnidad() = 10
-	
-	
 }
 
 /** **************************************************** **/
@@ -61,7 +60,7 @@ class Birra inherits Comida {
 
 class Cocacola inherits Comida {
 	
-	override method image() = "birra.png"
+	override method image() = "cocacola.png"
 	
 	override method energiaPorUnidad() = 20
 	
